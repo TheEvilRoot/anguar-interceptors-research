@@ -1,0 +1,17 @@
+<div class="app-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Github username</mat-label>
+    <input type="text" matInput [formControl]="usernameFormControl"
+           placeholder="octocat">
+    <mat-error *ngIf="usernameFormControl.hasError('user') && !usernameFormControl.hasError('required')">
+      This user does not exists
+    </mat-error>
+    <mat-error *ngIf="usernameFormControl.hasError('required')">
+      Please, enter the username
+    </mat-error>
+    <mat-error *ngIf="usernameFormControl.hasError('request')">
+      Error occurred requesting profile: {{ usernameFormControl.getError('request') }}
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button (click)="onSubmit()" color="primary">Get profile</button>
+</div>
